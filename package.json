@@ -3,13 +3,19 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "migrate": "bun src/migrate.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "drizzle-orm": "^0.30.1",
+    "elysia": "latest",
+    "pg": "^8.11.3",
+    "postgres": "^3.4.3"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@types/pg": "^8.11.2",
+    "bun-types": "latest",
+    "drizzle-kit": "^0.20.14"
   },
   "module": "src/index.js"
 }
