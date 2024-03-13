@@ -1,8 +1,10 @@
 import { Elysia, t } from "elysia";
 import { UserRole } from "../types/UserRole.enum";
 import userService from "../services/userService";
-import { UPDATE_USER_REQUEST_SCHEMA } from "../dtos/request/updateUserDto";
-import { DELETE_USER_REQUEST_SCHEMA } from "../dtos/request/deleteUser";
+import {
+  UPDATE_USER_REQUEST_SCHEMA,
+  DELETE_USER_REQUEST_SCHEMA,
+} from "../dtos/request/userRequests";
 
 export function userController(app: Elysia) {
   app.post(

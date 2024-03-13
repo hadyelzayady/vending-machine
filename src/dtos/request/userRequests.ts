@@ -11,3 +11,9 @@ export const UPDATE_USER_REQUEST_SCHEMA = {
     roles: t.Optional(t.Array(t.Enum(UserRole))),
   }),
 } as const;
+
+export const DELETE_USER_REQUEST_SCHEMA = {
+  params: t.Object({
+    userId: t.Numeric(),
+  }),
+} as const;
