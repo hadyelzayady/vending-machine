@@ -1,6 +1,8 @@
 import { Elysia, t } from "elysia";
 import { UserRole } from "../types/UserRole.enum";
 import userService from "../services/userService";
+import { UPDATE_USER_REQUEST_SCHEMA } from "../dtos/request/updateUserDto";
+import { DELETE_USER_REQUEST_SCHEMA } from "../dtos/request/deleteUser";
 
 export function userController(app: Elysia) {
   app.post(
@@ -30,6 +32,24 @@ export function userController(app: Elysia) {
         userId: t.Numeric(),
       }),
     },
+  );
+
+  app.put(
+    "/user/:userId",
+    async ({ params: { userId }, body }) => {
+      const user = await userService.updateUser(userId, body);
+      return user;
+    },
+    UPDATE_USER_REQUEST_SCHEMA,
+  );
+
+  app.delete(
+    "/user/:userId",
+    async ({ params: { userId } }) => {
+      const user = await userService.deleteUser(userId);
+      return user;
+    },
+    DELETE_USER_REQUEST_SCHEMA,
   );
   return app;
 }

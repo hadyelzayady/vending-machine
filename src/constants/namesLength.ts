@@ -1,0 +1,3 @@
+export const MAX_USERNAME_LENGTH = 100;
+export const MAX_PRODUCT_NAME_LENGTH = 100;
+export const MAX_ROLE_NAME_LENGTH = 100;

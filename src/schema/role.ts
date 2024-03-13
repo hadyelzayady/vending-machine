@@ -1,10 +1,16 @@
-import { pgTable, varchar, integer } from "drizzle-orm/pg-core";
+import { pgTable, varchar, integer, unique } from "drizzle-orm/pg-core";
+import { MAX_ROLE_NAME_LENGTH } from "../constants/namesLength";
 
-export const role = pgTable("role", {
-  id: integer("id").primaryKey(),
-  name: varchar("name", {
-    length: 50,
-    enum: ["BUYER", "SELLER"],
+export const role = pgTable(
+  "role",
+  {
+    id: integer("id").primaryKey(),
+    name: varchar("name", {
+      length: MAX_ROLE_NAME_LENGTH,
+      enum: ["BUYER", "SELLER"],
+    }),
+  },
+  (t) => ({
+    uniqRoleName: unique().on(t.name),
   }),
-  //  TODO unique name constraint
-});
+);
